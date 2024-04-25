@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Perdóname!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #image-container {
+      margin-top: 50px;
+    }
+    #perdoname-text {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    #options-container {
+      margin-top: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    #si-button {
+      background-color: green;
+      color: white;
+    }
+    #no-button {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="image-container">
+    <img id="imagen" src="https://drive.google.com/uc?id=1e1HD-bCha80nbic1lmrBtPfzacl_NR3z" alt="Disculpas">
+  </div>
+  <div id="perdoname-text">Amorcito, ¿me perdonas?</div>
+  <div id="options-container">
+    <button id="si-button" class="button">Sí</button>
+    <button id="no-button" class="button">No</button>
+  </div>
+
+  <script>
+    const siButton = document.getElementById('si-button');
+    const noButton = document.getElementById('no-button');
+    const perdonameText = document.getElementById('perdoname-text');
+    const imagen = document.getElementById('imagen');
+
+    let siSize = 18; // Tamaño inicial del botón Sí
+
+    // Función para manejar clics en el botón "No"
+    noButton.addEventListener('click', () => {
+      // Cambiar tamaño del botón "Sí"
+      siSize += 2;
+      siButton.style.fontSize = `${siSize}px`;
+
+      // Cambiar la imagen
+      let imagenIndex = siSize - 18; // Esto hará que cambie la imagen con cada clic en "No"
+      if(imagenIndex >= 17) imagenIndex = 15;
+      imagen.src = `https://drive.google.com/uc?id=${["1e1HD-bCha80nbic1lmrBtPfzacl_NR3z", "1ahc1xtz0Rk034o8sfSAj-Wp7tOFHkT9n", "1GjP46cQ5wfnYNuygYX07qxHTo03DOuk4", "1K-NAmumpzdrzw1FGR1eHutbhDDen0ST6", "1d7OaXLFxdtfBRrCyX-X6rdMd7RZOYQl9", "1J1tpYM3FkeSNZDPFXifjkNGRZi0578t4", "1zCFoWrHqQov5xWODj8zsJflsk-yvj9IV", "1mOExOGIX_8Jy9X4jpDtDSk4V5tHUeC44", "1ikbFo8ZmRzrjqNLiKZhzVb3RTUZdqxIG", "1LAggccIKocdMgNYomlleiimcIbNPUp6u", "1xICSyXj2dw3TpOSzULc4wkzKaI50xFXM", "1N0gx20NRl_bEWEQF5vRn3_EQb52DjBHF", "1IRmFt6jeBFBSB6JaM70ov_5PL8ZR1thW", "1Z5WpTomqwyRai2XZE3xL8O64ecEXB8_Z", "1y4hckce1IXXX_oAKln7urn6pRaldjlip", "1Z5WpTomqwyRai2XZE3xL8O64ecEXB8_Z"][imagenIndex]}`;
+      
+      // Mostrar texto aleatorio
+      const textos = ["Natalia, sos el amor de mi vida", "Flaquita, dame una última oportunidad, por favor", "Amorcito, te adoro", "Vamos bebe, di que sí", "Te prometo que no te voy a fallar", "Quiero estar contigo hasta la muerte, beibi", "Por favor amor, di que sí", "Bebe, porfavorrrrrrr"];
+      const textoAleatorio = textos[Math.floor(Math.random() * textos.length)];
+      perdonameText.textContent = textoAleatorio;
+
+      // Hacer que la imagen crezca hasta ocupar toda la pantalla después de 10 clics
+      if (siSize >= 100) {
+        imagen.style.width = '100vw';
+        imagen.style.height = '100vh';
+      }
+    });
+
+    // Función para manejar clics en el botón "Sí"
+    siButton.addEventListener('click', () => {
+      alert('¡No te voy a decepcionar!');
+    });
+  </script>
+</body>
+</html>
+
